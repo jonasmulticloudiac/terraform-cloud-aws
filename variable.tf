@@ -40,9 +40,9 @@ variable "aws_publicip" {
   type = bool
 }
 
-variable "user_data" {
-  description = "user data for apache script"
-}
+# variable "user_data" {
+#   description = "user data for apache script"
+# }
 
 variable "vpc-block" {
   default = "172.50.0.0/16"

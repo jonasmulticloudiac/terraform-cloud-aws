@@ -16,7 +16,7 @@ EOF
 resource "aws_launch_configuration" "awslaunch" {
   name = var.aws_launchcfg_name
   image_id = data.aws_ami.amazonlinux.image_id
-  instance_type = "t2.micro"
+  instance_type = "t2.large"
   security_groups = [aws_security_group.awsfw.id]
   associate_public_ip_address = var.aws_publicip
   key_name = aws_key_pair.ssh.key_name
