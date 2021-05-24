@@ -1,5 +1,5 @@
 locals { 
-   
+
 ec2-userdata = <<-EOF
 #!/bin/bash
 sudo yum -y update
