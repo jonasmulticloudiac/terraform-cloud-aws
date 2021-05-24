@@ -36,7 +36,7 @@ resource "aws_security_group" "awsfw" {
 
 resource "aws_key_pair" "ssh" {
   key_name = "awspublickey"
-  public_key = file(${var.SSH-PUBKEY}) 
+  public_key = var.SSH-PUBKEY
   tags = {
     env = "prod"
   }
