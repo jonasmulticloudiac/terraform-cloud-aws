@@ -5,7 +5,7 @@ resource "aws_launch_configuration" "awslaunch" {
   security_groups = [aws_security_group.awsfw.id]
   associate_public_ip_address = var.aws_publicip
   key_name = aws_key_pair.ssh.key_name
-  user_data = var.user_data
+  user_data_base64 = var.user_data
  
 }
 
