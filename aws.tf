@@ -1,3 +1,18 @@
+locals { 
+   
+ec2-userdata = <<-EOF
+#!/bin/bash
+sudo yum -y update
+sudo yum install -y httpd
+sudo service httpd start
+echo '<!doctype html><html><head><title>CONGRATS.TFexpert!</title><style>body {background-color: #1c87c9;}</style></head><body></body></html>' | sudo tee /var/www/html/index.html
+echo "<BR><BR> LOAD-BALANCER | AUTO-SCL <BR><BR>" >> /var/www/html/index.html
+EOF
+
+}
+
+
+
 resource "aws_launch_configuration" "awslaunch" {
   name = var.aws_launchcfg_name
   image_id = data.aws_ami.amazonlinux.image_id
@@ -5,7 +20,7 @@ resource "aws_launch_configuration" "awslaunch" {
   security_groups = [aws_security_group.awsfw.id]
   associate_public_ip_address = var.aws_publicip
   key_name = aws_key_pair.ssh.key_name
-  user_data_base64 = var.user_data
+  user_data_base64 = "${base64encode(local.ec2-userdata)}"
  
 }
 
