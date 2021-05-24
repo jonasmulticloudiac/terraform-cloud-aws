@@ -80,3 +80,8 @@ variable "centos-script"{
   default = "sudo yum -y update && sudo yum install -y httpd && sudo service httpd start && echo '<!doctype html><html><body><h1>CONGRATULATIONS!!..You are on your way to become a Terraform expert!</h1></body></html>' | sudo tee /var/www/html/index.html"
 }
 
+
+
+variable "SSH-PUBKEY" {
+  description = "public ssh"
+}
